@@ -11,14 +11,12 @@ $output = fopen('php://output', 'w');
 $delimiter = ';'; // Cambia aquí el delimitador a punto y coma
 
 // Escribe la cabecera del CSV
-fputcsv($output, ['Email', 'Phone'], $delimiter); // Usa el delimitador aquí
+fputcsv($output, ['Nombre', 'Email', 'Phone'], $delimiter); // Usa el delimitador aquí
 
 // Escribe los datos en el CSV
 foreach ($data['inscriptions'] as $inscription) {
-    fputcsv($output, [$inscription['email'], $inscription['phone']], $delimiter); // También aquí
+    fputcsv($output, [$inscription['name'], $inscription['email'], $inscription['phone']], $delimiter); // Cambia 'nombre' por 'name'
 }
-
-
 
 // Cierra el archivo
 fclose($output);

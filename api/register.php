@@ -27,11 +27,12 @@ function writeData($data_file, $data)
     file_put_contents($data_file, json_encode($data));
 }
 
+$name = isset($_POST['name']) ? $_POST['name'] : null;
 $email = isset($_POST['email']) ? $_POST['email'] : null;
 $phone = isset($_POST['phone']) ? $_POST['phone'] : null;
 
-if (!$email || !$phone) {
-    echo json_encode(['success' => false, 'message' => 'Correo y teléfono son requeridos']);
+if (!$email || !$phone | !$name) {
+    echo json_encode(['success' => false, 'message' => 'Nombre, Correo y teléfono son requeridos']);
     exit;
 }
 
@@ -52,9 +53,9 @@ if ($count >= $max_count) {
     exit;
 }
 
-$data['inscriptions'][] = ['email' => $email, 'phone' => $phone];
+$data['inscriptions'][] = ['name' => $name, 'email' => $email, 'phone' => $phone];
 $data['count']++;
 writeData($data_file, $data);
 
 echo json_encode(['success' => true, 'count' => $data['count']]);
-exit;
+exit();
