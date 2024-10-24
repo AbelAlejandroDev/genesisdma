@@ -5,6 +5,10 @@ error_reporting(E_ALL);
 
 require '../vendor/autoload.php'; // Cargar las dependencias de Composer
 
+header("Access-Control-Allow-Origin: https://genesisdma.com");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
 // Cargar variables de entorno
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->load();
@@ -90,4 +94,3 @@ try {
 } catch (Throwable $t) {
     echo json_encode(['status' => 'error', 'message' => "An unexpected error occurred: {$t->getMessage()}"]);
 }
-?>
