@@ -5,9 +5,9 @@ error_reporting(E_ALL);
 
 require '../vendor/autoload.php'; // Cargar las dependencias de Composer
 
-header("Access-Control-Allow-Origin: https://genesisdma.com");
-header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header("Access-Control-Allow-Origin: *"); // Permitir todas las solicitudes de cualquier origen
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS"); // Permitir solo POST, GET, y OPTIONS
+header("Access-Control-Allow-Headers: Content-Type, Authorization"); // Permitir encabezados específicos
 
 // Cargar variables de entorno
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
